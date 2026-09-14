@@ -48,8 +48,8 @@ Error generating stack: `+u.message+`
         .divisor-box-outer:hover .spinner-buttons,
         .divisor-box-outer:focus-within .spinner-buttons { opacity:1; visibility:visible; }
         @media (hover:none){ .spinner-buttons{ opacity:0; visibility:hidden; } .divisor-box-outer:focus-within .spinner-buttons{ opacity:1; visibility:visible; } }
-        .divisor-box-outer{ display:flex; flex-direction:row; align-items:center; justify-content:center; gap:4px; border: none !important; box-shadow:none !important; outline:none !important; }
-        .divisor-box{ background:#fff !important; border:1px solid #000 !important; border-radius:6px !important; width:28px !important; height:20px !important; display:flex; align-items:center; justify-content:center; overflow:hidden !important; box-sizing:border-box !important; }
+        .divisor-box-outer{ display:flex; flex-direction:row; align-items:center; justify-content:center; gap:4px; border: none !important; box-shadow:none !important; outline:none !important; padding:1px !important; }
+        .divisor-box{ background:#fff !important; border:1px solid #000 !important; border-radius:6px !important; width:28px !important; height:20px !important; display:flex; align-items:center; justify-content:center; overflow:hidden !important; box-sizing:border-box !important; margin:1px !important; }
         .total-cell{ position:relative; }
         .total-cell .total-spin{ opacity:0; visibility:hidden; transition:opacity 0.15s ease, visibility 0.15s ease; }
         .total-cell:hover .total-spin,
@@ -238,9 +238,9 @@ Error generating stack: `+u.message+`
           border-radius:4px !important;
           border:1px solid #000 !important;
           box-shadow:none !important;
-        }
-       td.marks-cell{
-         padding:1px 2px !important;
+       }
+      td.marks-cell{
+         padding:2px !important;
          height:0.55cm !important;
          min-height:0.55cm !important;
          max-height:0.55cm !important;
@@ -252,7 +252,7 @@ Error generating stack: `+u.message+`
          outline:none !important;
        }
         .cell-wrapper{
-          width:100%;
+          width:calc(100% - 2px) !important;
           height:0.55cm !important;
           min-height:0.55cm !important;
           max-height:0.55cm !important;
@@ -267,6 +267,7 @@ Error generating stack: `+u.message+`
           box-sizing:border-box;
           position:relative;
           box-shadow:none !important;
+          margin:1px !important;
         }
         .cell-wrapper:focus-within{
           border-color:#000 !important;
@@ -297,14 +298,14 @@ Error generating stack: `+u.message+`
           outline:none !important;
         }
         .divisor-input::-webkit-outer-spin-button,
-        .divisor-input::-webkit-inner-spin-button{
+       .divisor-input::-webkit-inner-spin-button{
           -webkit-appearance:none;
           margin:0;
         }
        .name-cell{
          position:relative;
          background:white;
-         padding:1px 2px !important;
+         padding:2px !important;
          height:0.55cm !important; min-height:0.55cm !important; max-height:0.55cm !important;
          border:1px solid #000 !important;
          box-sizing:border-box !important;
@@ -581,13 +582,21 @@ Error generating stack: `+u.message+`
             -webkit-mask:none !important;
             mask:none !important;
           }
-          .cell-wrapper,
           .name-wrapper,
           .marks-input-wrapper {
             background:transparent !important;
             border:0 !important;
             border-radius:0 !important;
             overflow:visible !important;
+          }
+          .cell-wrapper{
+            background:white !important;
+            border:1px solid #000 !important;
+            border-radius:0 !important;
+            overflow:visible !important;
+            margin:1px !important;
+            padding:1px !important;
+            box-sizing:border-box !important;
           }
           /* Ensure table cells always show their 1px border even when they contained rounded boxes */
           td.marks-cell,
@@ -602,6 +611,7 @@ Error generating stack: `+u.message+`
             border-radius:0 !important;
             overflow:visible !important;
             background-clip:padding-box !important;
+            padding:2px !important;
           }
           #diseCodeInput, #yearInput, #diseCode, #yearBox, .dise-code, .year-box, .dise-override, .year-override,
           .year-container, .dise-container{
@@ -635,10 +645,13 @@ Error generating stack: `+u.message+`
           }
           .cell-wrapper, .marks-cell .cell-wrapper{
             border-radius:0 !important;
-            border:0 !important;
+            border:1px solid #000 !important;
             box-shadow:none !important;
             overflow:visible !important;
             background:white !important;
+            margin:1px !important;
+            padding:1px !important;
+            box-sizing:border-box !important;
           }
           .spinner-buttons, .total-spin, .total-plus-btn, .total-minus-btn, .row-del-btn{ display:none !important; }
           .no-print,
@@ -650,6 +663,10 @@ Error generating stack: `+u.message+`
           .press-escape,
           .fullscreen-hint{ display:none !important; }
           #printPdfBtn{ display:none !important; }
+          /* 1px surrounding gap - print square version */
+          th, td{ padding:2px !important; }
+          .divisor-box{ margin:1px !important; border:1px solid #000 !important; border-radius:0 !important; box-sizing:border-box !important; }
+          .divisor-box-outer{ padding:1px !important; }
         }
         @keyframes popIn{ from{ transform:scale(0.96); opacity:0; } to{ transform:scale(1); opacity:1; } }
         @keyframes shrink{ from{ width:100%; } to{ width:0%; } }
