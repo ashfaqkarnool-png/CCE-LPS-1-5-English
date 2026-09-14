@@ -379,18 +379,40 @@ Error generating stack: `+u.message+`
           background-color:#ffffff !important;
           border:1px solid #000 !important;
         }
-        @media print {
-          @page{ size: landscape; margin:0.4cm; }
-          *{ -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-          html, body, #root, .preview-container, .a4-page, .header-outer-wrapper, table.cce-table, .flex-1{
-            overflow:visible !important;
-            height:auto !important;
-            max-height:none !important;
-          }
-          html{ background:white !important; padding:0 !important; margin:0 !important; width:100% !important; max-width:100% !important; min-height:auto !important; }
-          body{ background:white !important; padding:0 !important; margin:0 !important; display:block !important; width:100% !important; max-width:100% !important; min-height:auto !important; }
-          #root{ display:block !important; width:100% !important; max-width:100% !important; }
-          .preview-container{ width:100% !important; max-width:100% !important; overflow:visible !important; height:auto !important; }
+       @media print {
+         @page{ size: landscape; margin:0.4cm; }
+         *{ -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+         html, body, #root, .preview-container, .a4-page, .header-outer-wrapper, table.cce-table, .flex-1{
+           overflow:visible !important;
+           height:auto !important;
+           max-height:none !important;
+         }
+         html{ background:white !important; padding:0 !important; margin:0 !important; width:100% !important; max-width:100% !important; min-height:auto !important; }
+         body{ background:white !important; padding:0 !important; margin:0 !important; display:block !important; width:100% !important; max-width:100% !important; min-height:auto !important; }
+         #root{ display:block !important; width:100% !important; max-width:100% !important; }
+         .preview-container{ width:100% !important; max-width:100% !important; overflow:visible !important; height:auto !important; }
+         .a4-page{
+           width:100% !important;
+           min-width:100% !important;
+           max-width:100% !important;
+           padding:0.5cm !important;
+           border:none !important;
+           box-shadow:none !important;
+           margin:0 auto !important;
+           border-radius:0 !important;
+           -webkit-border-radius:0 !important;
+         }
+         .header-outer-wrapper{
+           width:100% !important;
+           min-width:100% !important;
+           max-width:100% !important;
+           margin:0 auto !important;
+           border:2px solid #000 !important;
+           border-radius:0 !important;
+           -webkit-border-radius:0 !important;
+           overflow:visible !important;
+           box-sizing:border-box !important;
+         }
           .a4-page{
             width:100% !important;
             min-width:100% !important;
@@ -413,53 +435,103 @@ Error generating stack: `+u.message+`
             overflow:visible !important;
             box-sizing:border-box !important;
           }
+         /* === FIX: background covering border in print === */
           table.cce-table{
             width:100% !important;
             min-width:100% !important;
             max-width:100% !important;
             margin:0 auto !important;
             table-layout:auto !important;
-            border-collapse:collapse !important;
-            border:1px solid #000 !important;
+            border-collapse: separate !important;
+            border-spacing: 0 !important;
+            border:1.2px solid #000 !important;
             border-radius:0 !important;
             -webkit-border-radius:0 !important;
             overflow:visible !important;
+            box-shadow:none !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
-            box-shadow:none !important;
+          }
+          .title-bar{
+            border-bottom:1.2px solid #000 !important;
+            background-clip: padding-box !important;
+          }
+          .green-info-row{
+            border-bottom:1.2px solid #000 !important;
+            background:white !important;
+            background-color:white !important;
+            background-clip: padding-box !important;
+          }
+          /* Keep green title bar visible but border on top */
+          .header-outer-wrapper .title-bar{
+            background:#18412a !important;
+            background-color:#18412a !important;
           }
           table{
             width:100% !important;
             table-layout:auto !important;
-            border-collapse:collapse !important;
+            border-collapse: separate !important;
+            border-spacing: 0 !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
             box-shadow:none !important;
           }
           th, td{
-            border:1px solid #000 !important;
-            border-collapse:collapse !important;
+            border:1.2px solid #000 !important;
+            border-collapse: separate !important;
             border-radius:0 !important;
             -webkit-border-radius:0 !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
             box-shadow:none !important;
+            background-clip: padding-box !important;
+          }
+          /* Force all data cells white in print so grey fill doesn't hide grid lines */
+          tbody td,
+          tbody td.total-100-col,
+          tbody td.total-grade-col,
+          tbody td.sem2-grade-col,
+          tbody td.grade-col,
+          td.marks-cell,
+          td.name-cell,
+          td.total-100-col,
+          td.total-grade-col,
+          td.sem2-grade-col{
+            background: white !important;
+            background-color: white !important;
+            background-clip: padding-box !important;
+          }
+          /* Header keeps very light tint but with padding-box so border stays on top */
+          thead th.row1-th,
+          thead th.row2-th{
+            background-clip: padding-box !important;
+            border:1.2px solid #000 !important;
+          }
+          thead th{
+            background-clip: padding-box !important;
+            border:1.2px solid #000 !important;
+          }
+          /* For grade columns that were #f0f0f0/#fafafa/#cfe2f3 - force white in print */
+          td.grade, th.grade, .total-col, .sem-col, .pct-col, .grade-col{
+            background: white !important;
+            background-color: white !important;
+            background-clip: padding-box !important;
           }
           tr, thead, tbody{
             border:1px solid #000 !important;
-            border-collapse:collapse !important;
+            border-collapse: separate !important;
             box-shadow:none !important;
             overflow:visible !important;
             height:auto !important;
           }
           #schoolInput{ width:5cm !important; max-width:5cm !important; min-width:5cm !important; flex:0 0 5cm !important; }
-          .row1-th{ height:0.80cm !important; min-height:0.80cm !important; max-height:none !important; overflow:visible !important; border:1px solid #000 !important; border-radius:0 !important; box-shadow:none !important; }
-          .row2-th{ height:0.75cm !important; min-height:0.75cm !important; max-height:none !important; overflow:visible !important; border:1px solid #000 !important; border-radius:0 !important; box-shadow:none !important; }
+          .row1-th{ height:0.80cm !important; min-height:0.80cm !important; max-height:none !important; overflow:visible !important; border:1.2px solid #000 !important; border-radius:0 !important; box-shadow:none !important; background-clip: padding-box !important; }
+          .row2-th{ height:0.75cm !important; min-height:0.75cm !important; max-height:none !important; overflow:visible !important; border:1.2px solid #000 !important; border-radius:0 !important; box-shadow:none !important; background-clip: padding-box !important; }
           .data-row{ height:0.55cm !important; min-height:0.55cm !important; max-height:none !important; overflow:visible !important; }
-          .data-row td{ height:0.55cm !important; min-height:0.55cm !important; max-height:none !important; overflow:visible !important; border:1px solid #000 !important; border-radius:0 !important; box-shadow:none !important; }
+          .data-row td{ height:0.55cm !important; min-height:0.55cm !important; max-height:none !important; overflow:visible !important; border:1.2px solid #000 !important; border-radius:0 !important; box-shadow:none !important; background-clip: padding-box !important; background: white !important; background-color: white !important; }
           .top-filter-input{ height:0.60cm !important; min-height:0.60cm !important; max-height:none !important; border-radius:0 !important; overflow:visible !important; box-shadow:none !important; }
-          td.marks-cell{ height:0.55cm !important; min-height:0.55cm !important; max-height:none !important; border:1px solid #000 !important; border-radius:0 !important; overflow:visible !important; box-shadow:none !important; }
-          input.marks-input{ height:0.55cm !important; max-height:none !important; border-radius:0 !important; border:0 !important; overflow:visible !important; box-shadow:none !important; }
+          td.marks-cell{ height:0.55cm !important; min-height:0.55cm !important; max-height:none !important; border:1.2px solid #000 !important; border-radius:0 !important; overflow:visible !important; box-shadow:none !important; background: white !important; background-color: white !important; background-clip: padding-box !important; }
+          input.marks-input{ height:0.55cm !important; max-height:none !important; border-radius:0 !important; border:0 !important; overflow:visible !important; box-shadow:none !important; background: white !important; }
           /* dont show round corner boxes of main table in print */
           .a4-page, .header-outer-wrapper, table.cce-table, .title-bar, .green-info-row, .cce-table, .cell-wrapper, .top-filter-input, .marks-cell, .name-cell, .pct-box, .name-wrapper, .marks-input-wrapper{
             border-radius:0 !important;
@@ -520,7 +592,8 @@ Error generating stack: `+u.message+`
           .name-wrapper, input.name-input{
             border:0 !important;
             border-radius:0 !important;
-            background:transparent !important;
+            background:white !important;
+            background-color:white !important;
             box-shadow:none !important;
           }
           .cell-wrapper, .marks-cell .cell-wrapper{
@@ -528,7 +601,8 @@ Error generating stack: `+u.message+`
             border:0 !important;
             box-shadow:none !important;
             overflow:visible !important;
-            background:transparent !important;
+            background:white !important;
+            background-color:white !important;
           }
           .spinner-buttons, .total-spin, .total-plus-btn, .total-minus-btn, .row-del-btn{ display:none !important; }
           .no-print,
