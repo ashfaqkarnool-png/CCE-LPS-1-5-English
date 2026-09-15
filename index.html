@@ -373,233 +373,139 @@ Error generating stack: `+u.message+`
           border:1px solid #000 !important;
           box-shadow:none !important;
         }
-       @media print {
+      @media print {
+        @page{ size: landscape; margin:0.4cm; }
          @page{ size: landscape; margin:0.4cm; }
-         *{ -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; outline:none !important; box-shadow:none !important; }
-         html, body, #root, .preview-container, .a4-page, .header-outer-wrapper, .outer-wrapper, table.cce-table, .flex-1{
+         *{ -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+         html, body{
+           background:white !important;
+           padding:0 !important; margin:0 !important;
+           width:100% !important; max-width:100% !important;
+           min-height:auto !important; height:auto !important;
            overflow:visible !important;
-           height:auto !important;
-           max-height:none !important;
-           box-shadow:none !important;
-           outline:none !important;
          }
-         html{ background:white !important; padding:0 !important; margin:0 !important; width:100% !important; max-width:100% !important; min-height:auto !important; }
-         body{ background:white !important; padding:0 !important; margin:0 !important; display:block !important; width:100% !important; max-width:100% !important; min-height:auto !important; }
+         #root, .preview-container, .a4-page, .header-outer-wrapper, .outer-wrapper, .flex-1{
+           overflow:visible !important;
+           height:auto !important; max-height:none !important;
+           box-shadow:none !important; outline:none !important;
+         }
          #root{ display:block !important; width:100% !important; max-width:100% !important; }
          .preview-container{ width:100% !important; max-width:100% !important; overflow:visible !important; height:auto !important; }
          .a4-page{
-           width:100% !important;
-           min-width:100% !important;
-           max-width:100% !important;
-           padding:0.5cm !important;
-           border:none !important;
-           box-shadow:none !important;
-           margin:0 auto !important;
-           border-radius:0 !important;
+           width:100% !important; min-width:100% !important; max-width:100% !important;
+           padding:0.5cm !important; border:none !important; box-shadow:none !important;
+           margin:0 auto !important; border-radius:0 !important;
+           overflow:visible !important; height:auto !important; max-height:none !important;
+           display:block !important;
          }
          .header-outer-wrapper, .outer-wrapper{
-           width:100% !important;
-           min-width:100% !important;
-           max-width:100% !important;
-           margin:0 auto !important;
-           border:1px solid #000 !important;
-           border-radius:0 !important;
+           width:100% !important; min-width:100% !important; max-width:100% !important;
+           margin:0 auto !important; border:1px solid #000 !important; border-radius:0 !important;
+           overflow:visible !important; box-sizing:border-box !important; box-shadow:none !important; outline:none !important;
+           background:#ffffff !important; height:auto !important; max-height:none !important;
+         }
+         .title-bar{
+           border:none !important; border-bottom:0.8px solid #000 !important;
+           background-clip:padding-box !important; box-shadow:none !important; outline:none !important; border-radius:0 !important;
            overflow:visible !important;
-           box-sizing:border-box !important;
-           box-shadow:none !important;
-           outline:none !important;
+         }
+         .green-info-row{
+           border:none !important; background:white !important; background-clip:padding-box !important;
+           box-shadow:none !important; border-radius:0 !important; overflow:visible !important;
+         }
+         .header-outer-wrapper .title-bar{ background:#18412a !important; }
+         /* TABLE CORE - FIXED PRINT BORDERS */
+         table, table.cce-table, table#cceTable, .cce-table{
+           width:100% !important; min-width:100% !important; max-width:100% !important;
+           margin:0 auto !important; table-layout:auto !important;
+           border-collapse:collapse !important; border-spacing:0 !important;
+           border:1px solid #000 !important; border-radius:0 !important;
+           overflow:visible !important; box-shadow:none !important; outline:none !important;
            background:#ffffff !important;
          }
-          table.cce-table{
-            width:100% !important;
-            min-width:100% !important;
-            max-width:100% !important;
-            margin:0 auto !important;
-            table-layout:auto !important;
-            border-collapse:collapse !important;
-            border-spacing:0 !important;
-            border:1px solid #000 !important;
-            border-radius:0 !important;
-            overflow:visible !important;
-            box-shadow:none !important;
-            outline:none !important;
-            background:#ffffff !important;
-          }
-          .title-bar{
-            border:none !important;
-            border-bottom:0.8px solid #000 !important;
-            background-clip: padding-box !important;
-            box-shadow:none !important;
-            outline:none !important;
-            border-radius:0 !important;
-          }
-          .green-info-row{
-            border:none !important;
-            background:white !important;
-            background-clip: padding-box !important;
-            box-shadow:none !important;
-            border-radius:0 !important;
-          }
-          .header-outer-wrapper .title-bar{
-            background:#18412a !important;
-          }
-          table{
-            width:100% !important;
-            table-layout:auto !important;
-            border-collapse:collapse !important;
-            border-spacing:0 !important;
-            box-shadow:none !important;
-            outline:none !important;
-            border-radius:0 !important;
-            background:#ffffff !important;
-          }
-          th, td{
-            border:0.8px solid #000 !important;
-            border-width:0.8px !important;
-            border-collapse:collapse !important;
-            border-radius:0 !important;
-            box-shadow:none !important;
-            outline:none !important;
-            background-clip: padding-box !important;
-            background:#ffffff !important;
-          }
-          tbody td,
-          tbody td.total-100-col,
-          tbody td.total-grade-col,
-          tbody td.sem2-grade-col,
-          tbody td.grade-col,
-          td.marks-cell,
-          td.name-cell,
-          td.total-100-col,
-          td.total-grade-col,
-          td.sem2-grade-col{
-            background: white !important;
-            background-clip: padding-box !important;
-            border:0.8px solid #000 !important;
-            box-shadow:none !important;
-          }
-          thead th.row1-th,
-          thead th.row2-th{
-            background:#ffffff !important;
-            background-clip: padding-box !important;
-            border:0.8px solid #000 !important;
-            box-shadow:none !important;
-            outline:none !important;
-            border-radius:0 !important;
-          }
-          thead th{
-            background:#ffffff !important;
-            background-clip: padding-box !important;
-            border:0.8px solid #000 !important;
-            box-shadow:none !important;
-          }
-          td.grade, th.grade, .total-col, .sem-col, .pct-col, .grade-col{
-            background: white !important;
-            background-clip: padding-box !important;
-            border:0.8px solid #000 !important;
-          }
-          tr, thead, tbody{
-            border:none !important;
-            box-shadow:none !important;
-            overflow:visible !important;
-            height:auto !important;
-            outline:none !important;
-          }
-          tr{ border:none !important; }
-          #schoolInput{ width:5cm !important; max-width:5cm !important; min-width:5cm !important; flex:0 0 5cm !important; border-radius:0 !important; box-shadow:none !important; background:#ffffff !important; }
-          .row1-th{ height:0.80cm !important; min-height:0.80cm !important; max-height:none !important; overflow:visible !important; border:0.8px solid #000 !important; border-radius:0 !important; box-shadow:none !important; background:#ffffff !important; background-clip: padding-box !important; }
-          .row2-th{ height:0.75cm !important; min-height:0.75cm !important; max-height:none !important; overflow:visible !important; border:0.8px solid #000 !important; border-radius:0 !important; box-shadow:none !important; background:#ffffff !important; background-clip: padding-box !important; }
-          .data-row{ height:0.55cm !important; min-height:0.55cm !important; max-height:none !important; overflow:visible !important; background:#ffffff !important; }
-          .data-row td{ height:0.55cm !important; min-height:0.55cm !important; max-height:none !important; overflow:visible !important; border:0.8px solid #000 !important; border-radius:0 !important; box-shadow:none !important; background-clip: padding-box !important; background: white !important; }
-          .top-filter-input{ height:0.60cm !important; min-height:0.60cm !important; max-height:none !important; border-radius:0 !important; overflow:visible !important; box-shadow:none !important; background:#ffffff !important; }
-          td.marks-cell{ height:0.55cm !important; min-height:0.55cm !important; max-height:none !important; border:0.8px solid #000 !important; border-radius:0 !important; overflow:visible !important; box-shadow:none !important; background: white !important; background-clip: padding-box !important; }
-          input.marks-input{ height:0.55cm !important; max-height:none !important; border-radius:0 !important; border:0 !important; overflow:visible !important; box-shadow:none !important; background: white !important; }
-          .a4-page, .header-outer-wrapper, .outer-wrapper, table.cce-table, .title-bar, .green-info-row, .cce-table, .top-filter-input, .marks-cell, .name-cell, .pct-box, .marks-input-wrapper{
-            border-radius:0 !important;
-          }
-          .divisor-direct-wrap{
-            border:none !important;
-            box-shadow:none !important;
-            background:#ffffff !important;
-            border-radius:0 !important;
-            overflow:visible !important;
-          }
-          .divisor-input{
-            border:0.8px solid #000 !important;
-            box-shadow:none !important;
-            background:white !important;
-            border-radius:2px !important;
-            overflow:visible !important;
-          }
-          /* GLOBAL FIX for rounded */
-          [style*="border-radius"],
-          .rounded,
-          .fa-box, .sa-box, .sem-box, .total-box, .header-cell,
-          .pct-box,
-          .marks-input-wrapper,
-          .custom-dd-btn,
-          .custom-dd-wrap,
-          .top-filter-input {
-            border-radius:0 !important;
-            overflow:visible !important;
-            -webkit-mask:none !important;
-            mask:none !important;
-          }
-          /* Ensure table cells show 0.8px border - no inner squares - all white */
-          td.marks-cell,
-          td.name-cell,
-          th.row1-th,
-          th.row2-th,
-          td.total-100-col,
-          td.total-grade-col,
-          td.sem2-grade-col,
-          td.grade-col {
-            border:0.8px solid #000 !important;
-            border-radius:0 !important;
-            overflow:hidden !important;
-            background:#ffffff !important;
-            background-clip:padding-box !important;
-            padding:0 !important;
-          }
-          #diseCodeInput, #yearInput, #diseCode, #yearBox, .dise-code, .year-box, .dise-override, .year-override,
-          .year-container, .dise-container{
-            display:block !important;
-            visibility:visible !important;
-            background:white !important;
-            border:none !important;
-            box-shadow:none !important;
-            outline:none !important;
-            border-radius:0 !important;
-            opacity:1 !important;
-          }
-          .title-bar .dise-override,
-          .title-bar .year-override,
-          .title-bar #diseCodeInput,
-          .title-bar #yearInput{
-            display:block !important;
-            visibility:visible !important;
-            background:white !important;
-            border:none !important;
-            box-shadow:none !important;
-            outline:none !important;
-            border-radius:0 !important;
-            opacity:1 !important;
-          }
-          .spinner-buttons, .total-spin, .total-plus-btn, .total-minus-btn, .row-del-btn{ display:none !important; }
-          .no-print,
-          .grading-chart,
-          #grading-chart,
-          .formula-note,
-          .formula-box,
-          .escape-hint,
-          .press-escape,
-          .fullscreen-hint{ display:none !important; }
-          #printPdfBtn{ display:none !important; }
-          /* No inner squares in print - cells themselves are boxes */
-          th, td{ padding:0 !important; }
-          td.marks-cell, td.name-cell{ padding:0 !important; border:1px solid #000 !important; }
-          input.marks-input, input.name-input{ padding:0 !important; border:none !important; background:white !important; }
-        }
+         table.cce-table{ border-collapse:collapse !important; }
+         /* THEAD */
+         thead{ display:table-header-group !important; }
+         tbody{ display:table-row-group !important; }
+         tr{ display:table-row !important; }
+         thead th, thead th.row1-th, thead th.row2-th, th.row1-th, th.row2-th, th{
+           border:0.8px solid #000 !important; border-width:0.8px !important;
+           background:#ffffff !important; background-clip:padding-box !important;
+           box-shadow:none !important; outline:none !important; border-radius:0 !important;
+           overflow:visible !important;
+         }
+         /* === CRITICAL FIX: ALL TBODY ROWS GET BORDERS === */
+         tbody tr, tbody tr.data-row, tr.data-row, tr.student-row{
+           border-bottom:0.8px solid #000 !important;
+           border-top:0.8px solid #000 !important;
+           border-left:0.8px solid #000 !important;
+           border-right:0.8px solid #000 !important;
+           height:22px !important; min-height:22px !important; max-height:none !important;
+           height:0.55cm !important; min-height:0.55cm !important;
+           overflow:visible !important; page-break-inside:avoid !important;
+           page-break-after:auto !important;
+           box-shadow:none !important; outline:none !important; border-radius:0 !important;
+           display:table-row !important;
+         }
+         tbody td, td, td.marks-cell, td.name-cell, td.total-100-col, td.total-grade-col, td.sem2-grade-col, td.grade-col,
+         tbody td.total-100-col, tbody td.total-grade-col, tbody td.sem2-grade-col, tbody td.grade-col,
+         td.marks-cell, td.name-cell{
+           border:0.8px solid #000 !important; border-width:0.8px !important;
+           background:white !important; background-clip:padding-box !important;
+           box-shadow:none !important; outline:none !important; border-radius:0 !important;
+           height:22px !important; min-height:22px !important; max-height:none !important;
+           height:0.55cm !important; min-height:0.55cm !important;
+           padding:0 !important; overflow:visible !important;
+           page-break-inside:avoid !important;
+         }
+         /* Specific cell types - enforce same border */
+         td.grade, th.grade, .total-col, .sem-col, .pct-col, .grade-col{
+           border:0.8px solid #000 !important; background:white !important;
+         }
+         /* Inputs - must NOT override td border */
+         input.marks-input, input.marks-input.direct, input.name-input{
+           border:0 !important; border:none !important; outline:none !important;
+           box-shadow:none !important; border-radius:0 !important;
+           background:transparent !important; background:white !important;
+           height:22px !important; min-height:22px !important;
+           height:0.55cm !important; min-height:0.55cm !important;
+           max-height:none !important; padding:0 !important;
+           overflow:visible !important;
+         }
+         /* Preserve school input 5cm etc */
+         #schoolInput{
+           width:5cm !important; max-width:5cm !important; min-width:5cm !important; flex:0 0 5cm !important;
+           border-radius:0 !important; box-shadow:none !important; background:#ffffff !important;
+           border:1px solid #000 !important; overflow:visible !important;
+         }
+         .row1-th{ height:0.80cm !important; min-height:0.80cm !important; max-height:none !important; overflow:visible !important; border:0.8px solid #000 !important; border-radius:0 !important; box-shadow:none !important; background:#ffffff !important; background-clip:padding-box !important; }
+         .row2-th{ height:0.75cm !important; min-height:0.75cm !important; max-height:none !important; overflow:visible !important; border:0.8px solid #000 !important; border-radius:0 !important; box-shadow:none !important; background:#ffffff !important; background-clip:padding-box !important; }
+         .top-filter-input{ height:0.60cm !important; min-height:0.60cm !important; max-height:none !important; border-radius:0 !important; overflow:visible !important; box-shadow:none !important; background:#ffffff !important; }
+         .divisor-direct-wrap{ border:none !important; box-shadow:none !important; background:#ffffff !important; border-radius:0 !important; overflow:visible !important; }
+         .divisor-input{
+           border:0.8px solid #000 !important; box-shadow:none !important; background:white !important;
+           border-radius:2px !important; overflow:visible !important;
+         }
+         [style*="border-radius"], .rounded, .fa-box, .sa-box, .sem-box, .total-box, .header-cell, .pct-box, .marks-input-wrapper, .custom-dd-btn, .custom-dd-wrap, .top-filter-input {
+           border-radius:0 !important; overflow:visible !important; -webkit-mask:none !important; mask:none !important;
+         }
+         #diseCodeInput, #yearInput, #diseCode, #yearBox, .dise-code, .year-box, .dise-override, .year-override, .year-container, .dise-container{
+           display:block !important; visibility:visible !important; background:white !important; border:none !important;
+           box-shadow:none !important; outline:none !important; border-radius:0 !important; opacity:1 !important;
+         }
+         .title-bar .dise-override, .title-bar .year-override, .title-bar #diseCodeInput, .title-bar #yearInput{
+           display:block !important; visibility:visible !important; background:white !important; border:none !important;
+           box-shadow:none !important; outline:none !important; border-radius:0 !important; opacity:1 !important;
+         }
+         .spinner-buttons, .total-spin, .total-plus-btn, .total-minus-btn, .row-del-btn{ display:none !important; }
+         .no-print, .grading-chart, #grading-chart, .formula-note, .formula-box, .escape-hint, .press-escape, .fullscreen-hint{ display:none !important; }
+         #printPdfBtn{ display:none !important; }
+         th, td{ padding:0 !important; }
+         /* Final explicit table border enforcement - copy first 3 rows style to all */
+         table.cce-table tbody tr{ border-bottom:0.8px solid #000 !important; }
+         table.cce-table tbody td{ border:0.8px solid #000 !important; background:white !important; }
+         table.cce-table{ border-collapse:collapse !important; }
+       }
         @keyframes popIn{ from{ transform:scale(0.96); opacity:0; } to{ transform:scale(1); opacity:1; } }
         @keyframes shrink{ from{ width:100%; } to{ width:0%; } }
        @keyframes ddIn{ from{ opacity:0; transform:translateY(-6px) scale(0.98); } to{ opacity:1; transform:translateY(0) scale(1); } }
